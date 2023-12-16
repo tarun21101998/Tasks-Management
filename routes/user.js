@@ -1,46 +1,30 @@
-
 const express = require('express')
 const router = express.Router();
 const user = require('../controller/user')
+const registeration= require('../controller/registeration')
+const tasks = require('../controller/tasks.js')
+const middleware = require('../controller/middleware.js')
 
 
 
 
 // Data saving to Data Base
-router.post('/users', user.createData)
+router.post('/users', registeration.signUp)
 // login API is handling
-router.post('/login', user.loginData)
+router.post('/login', registeration.loginData)
 
 // Data is fetching from DataBase
-router.get('/users', user.getMiddleWare,  user.getData)
-// Creating the ticket and saving  data to dataBase
-router.post('/requests', user.middleWare,  user.createRequests)
+router.get('/getUserDetails', middleware.getMiddleWare,  user.userDetails)
+// Creating the tasks and saving  data to dataBase
+router.post('/tasks', middleware.middleWare,  tasks.newTasks)
 
-// getting data from and compare from dataBase and sending the result  frontEnd
-router.get('/sendrequests', user.getMiddleWare,  user.getRequests)
+// getting tasks  from dataBase and sending the result  frontEnd
+router.get('/userTasks', middleware.getMiddleWare,  tasks.getTasks)
 
-// activation and deactivation of user
-router.put('/changeActive', user.middleWare,  user.changeActive)
-// Request is accepting
-router.put('/acceptRequest', user.middleWare,  user.acceptRequest)
+// edit the tasks
+router.put('/editTasks', middleware.middleWare,  tasks.editTasks)
 
-// rejecting the request
-router.put('/rejectRequest', user.middleWare,  user.rejectRequest)
-// profile fetch data
-router.get('/profile', user.getMiddleWare,  user.profile)
+// deleting the tasks
+router.delete('/deleteTasks', middleware.middleWare,  tasks.deleteTasks)
 
-// edit the first and last name
-router.put('/editNameProfile', user.middleWare, user.editNameProfile1)
-
-router.put('/editEmailProfile', user.middleWare,   user.editEmailProfile)
-router.put('/editTicket', user.middleWare,  user.editRequest)
-router.delete('/deleteTicket', user.middleWare,  user.deleteTicket)
-// Publish ticket
-router.put('/publishTicket', user.publishTicket)
-
-// reReview the ticket
-router.put('/reviewAgainTicket', user.reviewAgainTicket)
-
-// Get data for update
-router.get('/getUserDetail', user.getUserDetail)
 module.exports = router;

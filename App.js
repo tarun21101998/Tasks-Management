@@ -6,7 +6,7 @@ const cors = require('cors');
 
 // calling the express
 const app = express()
-
+var cookieParser = require('cookie-parser')
 
 
 // importing the DataBase and Collections
@@ -15,7 +15,8 @@ const db = require('./mongooseDataBase/initDB')
 const collection = require('./modals/data')
 
 const PORT = process.env.PORT || 8000
-
+// console.log(cookieParser())
+app.use(cookieParser())
 app.use(express.urlencoded());
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())

@@ -1,0 +1,43 @@
+.loginFormHeading{
+    font-size: 3rem;
+
+}
+.loginForm{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: blue;
+  }
+  .loginForm1{
+    width: 40%;
+    height: 80vh;
+    background-color: white;
+    color: black;
+  }
+  .loginForm1 input{
+    height: 20%; 
+    width: 50vh;
+    /* margin-left: 10px; */
+    border: 2px solid black;
+    color: black;
+  }
+  .loginForm1 label{
+    font-size:  2rem;
+  }
+  .loginForm1 button{
+    margin-right: auto;
+    margin-left: auto;
+    width: 60%;
+    height: 40px;
+    background: none;
+    /* border: none; */
+    color: blue;
+    background-color: red;
+    cursor: pointer;
+    margin-top: 50px;
+  }
+.hideShowPassword{
+    margin-right: 200px;
+}
