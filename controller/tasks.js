@@ -8,8 +8,9 @@ const jwtKey = 'e-com';
 // creating a new task
 module.exports.newTasks= async (req, resp) => {
     try {
+        console.log(req.body)
         const email1 = resp.temp
-            let result = await collection1.create({email: email1.email, tasks: req.body.newTasks});
+            let result = await collection1.create({email: email1.email, tasks: req.body.newTasks, from: req.body.fromDate, to: req.body.toDate});
             result = result.toObject();
             delete result.password  
             return resp.status(200).json("successful")
@@ -37,7 +38,7 @@ module.exports.getTasks= async (req, resp) => {
 module.exports.editTasks= async(req, resp)=>{
     try {
         let user = await collection1.findOne({_id: req.body.tasksId._id})
-        await collection1.updateOne({_id: req.body.tasksId._id}, {$set: {tasks: req.body.editTasks}})
+        await collection1.updateOne({_id: req.body.tasksId._id}, {$set: {tasks: req.body.editTasks, from: req.body.fromDate, to: req.body.toDate}})
         resp.status(200).send("successfully updated")
     } catch (error) {
         resp.send("error is showing")

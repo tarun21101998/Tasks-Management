@@ -3,18 +3,25 @@ import { FaBeer } from 'react-icons/fa';
 import { motion } from "framer-motion"
 import jwt from "jwt-decode";import "./App.css"
 import React from "react";
-const Navbar = () => {
 
+// function is handling the unavbar 
+const Navbar = () => {
     const auth = sessionStorage.getItem('token')
+
+    // show and hide the navbar
     const [hide, setHide]= React.useState(false)
+
+    // calling the use navigate function
     const navigate = useNavigate();
-    // console.log(auth)
+
+    // function for logging out from website
     const logout = () => {
         sessionStorage.removeItem('token');
         setHide(!hide);
         navigate('/signup')
     }
-        return (
+
+    return (
         <>
         {
             hide == false ?

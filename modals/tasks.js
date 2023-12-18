@@ -9,6 +9,14 @@ const tasksSchema = new mongoose.Schema({
     tasks: {
         type: String,
         require: true
+    },
+    from: {
+        type: Date,
+        require: true
+    },
+    to: {
+        type: Date,
+        require: true
     }
 },
 {timestamps : true}

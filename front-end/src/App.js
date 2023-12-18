@@ -2,6 +2,7 @@
   import Home from "./component/javaScript/home";
 import Tasks from "./component/javaScript/tasks";
 import SignUp from "./component/javaScript/signUp";
+import Error from "./component/javaScript/error";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -15,6 +16,7 @@ import Login from "./component/javaScript/login";
 
 const App = ()=>{
 
+const token = sessionStorage.getItem('token')
   const router = createBrowserRouter([
     {
       path: "/",
@@ -23,7 +25,8 @@ const App = ()=>{
         { index: true, element: <Home /> },
         { path: "/login", element: <Login /> },
         {path: "/signup", element: <SignUp/>},
-        {path: "/tasks", element: <Tasks />},
+        token ? {path: "/tasks", element: <Tasks />} :        {path: "/tasks", element: <Error />}, ,
+        {path: "*", element: <Error />},
       ],
     },
   ]);

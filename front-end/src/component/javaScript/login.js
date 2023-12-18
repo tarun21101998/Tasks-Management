@@ -6,19 +6,24 @@ import 'react-toastify/dist/ReactToastify.css';
 import {useNavigate  } from "react-router-dom";
 import { defaultFormat } from "moment/moment";
 import variable from "./env.js";
-// toast.configure()
 
 
 const Login = ()=>{
-    console.log(variable)
+
+// variable for hide and show the password
     const [showHidePassword, setShowHidePassword] = useState(false)
+
+// variable for set the value of email and password
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+
+// calling the use navigate function
     const navigate = useNavigate();
+
+// variable for handling the errors
     const [err, setErr] = useState("")
-    
 
-
+    // sending the login data to back-end
     const handleLogin = async (e) => {
         e.preventDefault()
         let result = await fetch(variable+"/login", {
@@ -29,7 +34,6 @@ const Login = ()=>{
             }
         });        
         result = await result.json();
-        console.log(result)
         if(result.isActive == false){
             setErr("Wrong credentials")
             return;
@@ -37,29 +41,22 @@ const Login = ()=>{
         if (result.auth) {
                 sessionStorage.setItem('token', JSON.stringify(result.auth));
                 sessionStorage.setItem('name', JSON.stringify(result.firstName))
-                // sessionStorage.setItem('isType', JSON.stringify(result.isType))
                 sessionStorage.setItem('id', JSON.stringify(result.id))
-            // navigate("/")
             toast.success('Successfully! logged in', {
                 position: toast.POSITION.TOP_center
             });
-            // setTimeout(()=>{
                 navigate('/tasks')
-            // }, 0)
-
         }
         else if(result.responce === false){
             toast.error('Enter correct Email Id', {
                 position: toast.POSITION.TOP_center
             });
 
-            // console.log("enter correct email")
         }
          else {
             toast.error('Enter EmailId or Password', {
                 position: toast.POSITION.TOP_center
             });
-
         }
     }
 

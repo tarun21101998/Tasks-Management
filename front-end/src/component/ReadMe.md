@@ -10,6 +10,6 @@ React library has been used for front-end.
 
 To run the React project run command (npm start)
 
-main file: /front-end/src/app.js 
+main file: /front-end/app.js 
 
 before  running the project install "node_modules" using command "npm install"

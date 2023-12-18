@@ -6,17 +6,21 @@ import { Link ,   useNavigate  } from "react-router-dom";
 
 
 const SignUp= ()=>{
-    const [adminId, setAdminId ] = useState()
+
+// variable for firstName, lastName, email, password
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+
+// variable for handling the error
     const [err, setErr] = useState("")
     const[err1, setErr1] = useState("");
+
+// calling the use navigate function
     const navigate = useNavigate();
-    
 
-
+    // sending  the user details to back-end
     const handleSignUpData = async (e) => {
         e.preventDefault();
         if(email  && firstName && lastName && password){

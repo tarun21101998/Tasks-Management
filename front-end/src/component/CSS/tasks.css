@@ -17,7 +17,7 @@ position: relative;
     height: 50px;
 }
 .popUp1{
-    height: 30%;
+    height: 40%;
     width: 40%;
     border: 5px solid white;
     position: absolute;
@@ -82,3 +82,7 @@ cursor: pointer;
   
   }
   
+
+  .pop1Input{
+    margin-top : 10px;
+  }
