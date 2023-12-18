@@ -36,7 +36,7 @@ const Navbar = () => {
         {auth ? <>
 
 {/* </li> */}
-<li>                                <Link onClick={()=>setHide(!hide)}  to="/tasks"><h3>My Tickets</h3></Link>
+<li>                                <Link onClick={()=>setHide(!hide)}  to="/tasks"><h3>All Tasks</h3></Link>
 </li>
 <li>                                <Link onClick={logout} to="/login">Logout {JSON.parse(auth).name}</Link>
 </li>
