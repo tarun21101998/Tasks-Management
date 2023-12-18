@@ -25,7 +25,7 @@ const token = sessionStorage.getItem('token')
         { index: true, element: <Home /> },
         { path: "/login", element: <Login /> },
         {path: "/signup", element: <SignUp/>},
-        token ? {path: "/tasks", element: <Tasks />} :        {path: "/tasks", element: <Error />}, ,
+        {path: "/tasks", element: <Tasks />}, ,
         {path: "*", element: <Error />},
       ],
     },

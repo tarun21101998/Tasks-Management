@@ -1,4 +1,5 @@
 import React from "react";
+import Error from "./error";
 import { ToastContainer, toast } from 'react-toastify';
 import {useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';
@@ -45,7 +46,8 @@ const Login = ()=>{
             toast.success('Successfully! logged in', {
                 position: toast.POSITION.TOP_center
             });
-                navigate('/tasks')
+            // window.reload(true)    
+            navigate('/tasks')
         }
         else if(result.responce === false){
             toast.error('Enter correct Email Id', {

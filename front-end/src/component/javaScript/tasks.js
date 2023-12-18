@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import moment from"moment";
 import { useState} from "react";
+import Error from "./error";
 import variable from "./env";
 import "../CSS/tasks.css"
 import { backIn } from "framer-motion";
@@ -65,15 +66,18 @@ setLastName(result.lastName)
   }
 
 // calling the function of user details
-  useEffect(()=>{
+useEffect(()=>{
+  if(token){
     getUserDetails()
+    }
   }, [])
 
   // calling the function for user tasks
-  useEffect(()=>{    
+  useEffect(()=>{
+    if(token){
     getUserTasks()
+    }
   }, []);
-
   // function for sending the new tasks to back-end
   const handleNewTasks= async()=>{
     let result = await fetch(variable+"/tasks", {
@@ -127,6 +131,8 @@ const handleToDate = (e)=>{
 
 
   return(
+    <>
+    {token ?
   <>
   <div className="addNewTasks">
     <h1>Hey,{firstName +" " + lastName} </h1>
@@ -216,11 +222,12 @@ setToDate(endDate)
 
           </tbody>
         </table>
+ </>
+  :
+  <Error />
+                }
+    </>
 
-  {/* </div> */}
-  
-
-  </>
 )
 }
 export default Tasks;

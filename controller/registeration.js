@@ -23,8 +23,9 @@ module.exports.loginData = async (req, resp, next) => {
                     if (err) {
                         return resp.status(500).json({ error: false });
                     }
-                    resp.cookie("auth", token)
-                    resp.status(200).json({firstName: user.firstName, lastName: user.lastName, id: user._id, auth: token })
+                    // return resp.cookie(auth, 'token');
+
+                    return resp.status(200).json({firstName: user.firstName, lastName: user.lastName, id: user._id, auth: token })
                 })
             } else {
                 return resp.status(401).json({ result: 'no user found' });
